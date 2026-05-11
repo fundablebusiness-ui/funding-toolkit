@@ -1,4 +1,4 @@
-# 📦 ShesFundable - Complete Package Summary
+﻿# 📦 ShesFundable - Complete Package Summary
 
 ## ✅ What You Have
 
