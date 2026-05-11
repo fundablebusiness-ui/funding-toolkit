@@ -649,8 +649,8 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="https://shesfundable.systeme.io/fundingtoolkit">Sales Page</a></li>
-                    <li><a href="https://shesfundable.systeme.io/order">Order Now</a></li>
+                    <li><a href="index.html">Sales Page</a></li>
+                    <li><a href="order.html">Order Now</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Resources</a></li>
                 </ul>
@@ -675,6 +675,42 @@
 </footer>
 
 <script>
+    // Get order data from sessionStorage or URL parameter
+    function getOrderEmail() {
+        // Try URL parameter first
+        const urlParams = new URLSearchParams(window.location.search);
+        const emailParam = urlParams.get('email');
+        if (emailParam) {
+            return emailParam;
+        }
+
+        // Try sessionStorage
+        try {
+            const orderData = JSON.parse(sessionStorage.getItem('orderData'));
+            if (orderData && orderData.email) {
+                return orderData.email;
+            }
+        } catch(e) {
+            console.log('No order data in session');
+        }
+
+        return 'your email';
+    }
+
+    // Update order confirmation with customer email
+    document.addEventListener('DOMContentLoaded', function() {
+        const customerEmail = getOrderEmail();
+        
+        // Update confirmation email display
+        const emailElement = document.querySelector('.detail-row .detail-value');
+        if (emailElement) {
+            emailElement.textContent = customerEmail;
+        }
+
+        // Log order received (in production, would confirm payment)
+        console.log('Order confirmed for:', customerEmail);
+    });
+
     // FAQ Toggle functionality
     document.querySelectorAll('.faq-question').forEach(question => {
         question.addEventListener('click', function() {
