@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Funding Toolkit - Get $50K Without Bank Hassle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #E91E8C;
+            --secondary: #000000;
+            --accent: #B8922A;
+            --danger: #E91E8C;
+            --success: #27AE60;
+            --dark: #1A1A1A;
+            --light: #F5F5F5;
+            --text-dark: #000000;
+            --text-light: #666666;
+            --gold: #B8922A;
+            --pink: #E91E8C;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
+            color: white;
+            padding: 40px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(233, 30, 140, 0.08);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--pink);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 6vw, 52px);
+            font-weight: 800;
+            margin: 15px 0 20px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero-highlight {
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 20px 0 30px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: #000000;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(184, 146, 42, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.5s ease;
+        }
+
+        .cta-primary:hover::before {
+            left: 100%;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(184, 146, 42, 0.4);
+        }
+
+        .sub-text {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* PROBLEM SECTION */
+        .problem {
+            padding: 60px 20px;
+            background: #F5F5F5;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 5vw, 42px);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--pink);
+            border-radius: 2px;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 50px auto 0;
+        }
+
+        .pain-point {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .pain-point:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .pain-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .pain-point h3 {
+            color: var(--pink);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .pain-point p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* SOLUTION SECTION */
+        .solution {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .solution-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .solution-intro p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin: 15px 0;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin: 50px 0;
+        }
+
+        .solution-item {
+            padding: 25px 0;
+            border-left: 4px solid var(--primary);
+            padding-left: 25px;
+        }
+
+        .solution-item h4 {
+            color: var(--pink);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .solution-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .value-badge {
+            display: inline-block;
+            background: #FFF0F7;
+            color: var(--pink);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* WHAT YOU GET */
+        .included {
+            background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
+            color: white;
+            padding: 60px 20px;
+            margin: 60px 0;
+        }
+
+        .included .section-title {
+            color: white;
+        }
+
+        .included .section-title::after {
+            background: var(--pink);
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto 0;
+        }
+
+        .included-item {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .included-item:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .item-number {
+            display: inline-block;
+            background: var(--gold);
+            color: #000000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .included-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        .included-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .original-value {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 10px;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* PROOF & OBJECTION HANDLING */
+        .proof {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #FFF0F7;
+            border-radius: 15px;
+            border-left: 5px solid var(--pink);
+        }
+
+        .proof h3 {
+            color: var(--pink);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .objection {
+            margin: 25px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid #000000;
+        }
+
+        .objection-q {
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .objection-a {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* SCARCITY & URGENCY */
+        .urgency-banner {
+            background: linear-gradient(90deg, var(--pink) 0%, #D61B7E 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            margin: 40px 20px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(233, 30, 140, 0.3);
+        }
+
+        .urgency-banner::before {
+            content: '⚡ ';
+            margin-right: 10px;
+        }
+
+        .urgency-banner::after {
+            content: ' ⚡';
+            margin-left: 10px;
+        }
+
+        /* PRICING SECTION */
+        .pricing {
+            padding: 60px 20px;
+            text-align: center;
+            background: #FFFFFF;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            margin: 30px auto;
+            box-shadow: 0 8px 30px rgba(184, 146, 42, 0.15);
+            position: relative;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--pink);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .pricing-value {
+            margin-top: 20px;
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+
+        .final-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--pink);
+            margin: 15px 0;
+        }
+
+        .price-period {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .price-savings {
+            background: #FFF0F7;
+            color: var(--pink);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 30px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+        }
+
+        .pricing-features li {
+            list-style: none;
+            margin: 12px 0;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .guarantee {
+            background: #FFF0F7;
+            border: 2px dashed var(--pink);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
+            color: white;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(24px, 4vw, 38px);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: #000000;
+            padding: 18px 35px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(184, 146, 42, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(184, 146, 42, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            padding: 15px 30px;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: #000000;
+        }
+
+        .btn-newsletter {
+            background: transparent;
+            color: var(--pink);
+            padding: 15px 30px;
+            border: 2px solid var(--pink);
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-newsletter:hover {
+            background: var(--pink);
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* UNIVERSAL FOOTER STYLES */
+        .universal-footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 60px 20px 30px;
+            margin-top: 80px;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(184, 146, 42, 0.2);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: #000000;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(184, 146, 42, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(184, 146, 42, 0.3);
+        }
+
+        .footer-bottom p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin: 0;
+        }
+
+        .newsletter-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .newsletter-text {
+            font-size: 1.1rem !important;
+            color: var(--pink) !important;
+            font-weight: 600;
+            margin-bottom: 15px !important;
+            line-height: 1.5;
+        }
+
+        .footer-newsletter-btn {
+            background: transparent;
+            color: var(--pink);
+            padding: 12px 24px;
+            border: 2px solid var(--pink);
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .footer-newsletter-btn:hover {
+            background: var(--pink);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ANIMATIONS */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            animation: slideInUp 0.8s ease;
+        }
+
+        /* MOCKUP SECTION */
+        .mockup-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .mockup-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mockup-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .mockup-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .mockup-content {
+            padding: 20px;
+        }
+
+        .mockup-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--pink);
+            margin-bottom: 10px;
+        }
+
+        .mockup-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .included-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-grid {
+                gap: 30px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">🌸 LIMITED SPRING TIME SPECIAL</div>
+        <h1>Unlock $50K+ In Funding <span class="hero-highlight">Your Bank Said No To</span></h1>
+        <p>The exact blueprint business owners are using to access capital that traditional lenders won't approve. No perfect credit required. No years in business needed. No endless paperwork.</p>
+        <a href="https://shesfundable.systeme.io/order" class="cta-primary">GET INSTANT ACCESS NOW</a>
+        <p class="sub-text">⚡ Instant digital delivery • 🔒 100% secure • ✓ Money-back guarantee</p>
+    </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section class="problem">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <h2 class="section-title">Stop Here If...</h2>
+        <div class="problem-grid">
+            <div class="pain-point">
+                <div class="pain-icon">🏦</div>
+                <h3>Banks Keep Rejecting You</h3>
+                <p>Traditional lenders want years in business and perfect credit. They don't exist in your world.</p>
+            </div>
+            <div class="pain-point">
+                <div class="pain-icon">📋</div>
+                <h3>Drowning in Paperwork</h3>
+                <p>Endless applications, personal guarantees, tax returns, bank statements... It's exhausting.</p>
+            </div>
+            <div class="pain-point">
+                <div class="pain-icon">⏳</div>
+                <h3>Can't Wait Months</h3>
+                <p>You need capital NOW. Your competitors aren't waiting. Your opportunity window is closing.</p>
+            </div>
+            <div class="pain-point">
+                <div class="pain-icon">💸</div>
+                <h3>Predatory Loan Fees</h3>
+                <p>20%+ interest rates. Origination fees. Hidden charges. You're getting crushed by costs.</p>
+            </div>
+            <div class="pain-point">
+                <div class="pain-icon">❌</div>
+                <h3>Bad Credit? You're Stuck</h3>
+                <p>One mistake on your credit report and every door slams shut. It feels impossible.</p>
+            </div>
+            <div class="pain-point">
+                <div class="pain-icon">😰</div>
+                <h3>Losing Sleep Over Cash Flow</h3>
+                <p>Payroll, inventory, growth—everything stalls because you don't have the capital. The stress is real.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<section class="solution">
+    <div class="solution-intro">
+        <h2 class="section-title">The Funding Toolkit: Your Blueprint for $50K+</h2>
+        <p>We've decoded the system. The banks don't want you to know this. But thousands of business owners have already cracked the code—and secured funding when traditional methods said "no."</p>
+        <p style="color: var(--primary); font-weight: bold; font-size: 1.15rem; margin-top: 25px;">This toolkit gives you the exact same roadmap.</p>
+    </div>
+
+    <div class="solution-grid">
+        <div>
+            <div class="solution-item">
+                <h4>✓ Remove Funding Roadblocks in 24 Hours</h4>
+                <p>Clear credit inquiries and ChexSystems blocks that are destroying your approval odds. Our proven process works—and works fast.</p>
+                <span class="value-badge">Worth $294 alone</span>
+            </div>
+            <div class="solution-item">
+                <h4>✓ Access Hidden Credit Union Network</h4>
+                <p>30+ credit unions that approve businesses banks reject. Lower rates. Flexible terms. They're waiting for YOU.</p>
+                <span class="value-badge">Worth $97</span>
+            </div>
+            <div class="solution-item">
+                <h4>✓ Get the "Fast-Track" Capital Guide</h4>
+                <p>Know exactly where to apply and how to position yourself. Same-day approvals possible—if you know where to look.</p>
+                <span class="value-badge">Worth $199</span>
+            </div>
+        </div>
+        <div>
+            <div class="solution-item">
+                <h4>✓ Master the Reconsideration Script</h4>
+                <p>Already approved? Use this to get 2x-5x your initial offer. It's negotiation simplified.</p>
+                <span class="value-badge">Worth $67</span>
+            </div>
+            <div class="solution-item">
+                <h4>✓ Avoid the Restricted Industries Trap</h4>
+                <p>One wrong classification kills your application. Know exactly which industries to avoid and how to position yours.</p>
+                <span class="value-badge">Worth $47</span>
+            </div>
+            <div class="solution-item">
+                <h4>✓ Database of $8.5B in Funding Sources</h4>
+                <p>175+ organizations. Government programs. Private lenders. Non-traditional sources. All vetted. All accessible.</p>
+                <span class="value-badge">Priceless</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- URGENCY BANNER -->
+<div class="urgency-banner">
+    🌸 LIMITED SPRING TIME SPECIAL | Normally $997, Today Only $47 | Offer Expires Soon
+</div>
+
+<!-- WHAT YOU GET -->
+<section class="included">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 class="section-title">Here's Exactly What You Get (Today)</h2>
+        
+        <div class="included-grid">
+            <div class="included-item">
+                <div class="item-number">1</div>
+                <h4>24-Hour Inquiry Removal Guide</h4>
+                <p>Your credit inquiries are blocking funding. Our proven 24-hour removal process. Many business owners apply again the next day and get approved.</p>
+                <div class="original-value">Value: $97</div>
+            </div>
+
+            <div class="included-item">
+                <div class="item-number">2</div>
+                <h4>ChexSystems Escape Blueprint</h4>
+                <p>70% of funding denials stem from ChexSystems blocks. Step-by-step guide to clear it—even if you think you're stuck forever.</p>
+                <div class="original-value">Value: $197</div>
+            </div>
+
+            <div class="included-item">
+                <div class="item-number">3</div>
+                <h4>Restricted Industries Checklist</h4>
+                <p>Know which industries kill applications instantly. Avoid the invisible rejections that trap most business owners.</p>
+                <div class="original-value">Value: $47</div>
+            </div>
+
+            <div class="included-item">
+                <div class="item-number">4</div>
+                <h4>Proven Reconsideration Script</h4>
+                <p>"Approved for $10K? We doubled it to $20K using this exact template." Copy-paste ready. Use immediately.</p>
+                <div class="original-value">Value: $67</div>
+            </div>
+
+            <div class="included-item">
+                <div class="item-number">5</div>
+                <h4>Business Legitimacy Checklist</h4>
+                <p>Lenders need to see your business is real. This checklist ensures you pass every verification requirement.</p>
+                <div class="original-value">Value: $197</div>
+            </div>
+
+            <div class="included-item">
+                <div class="item-number">6</div>
+                <h4>The Big List: 100+ Credit Reporting Agencies</h4>
+                <p>Know who's tracking you. Control your data. Block unauthorized inquiries. Take back power from the system.</p>
+                <div class="original-value">Value: $97</div>
+            </div>
+
+            <div class="included-item">
+                <div class="item-number">7</div>
+                <h4>30+ Credit Unions Master List</h4>
+                <p>Pre-screened lenders with highest approval rates. Flexible terms. Lower rates than traditional banks. Direct contact info included.</p>
+                <div class="original-value">Value: $97</div>
+            </div>
+
+            <div class="included-item">
+                <div class="item-number">8</div>
+                <h4>BONUS: Capital Fast-Track Guide</h4>
+                <p>When you need approval THIS WEEK. Exactly which 3 institutions approve fastest. How to apply. What to say.</p>
+                <div class="original-value">Value: $199</div>
+            </div>
+
+            <div class="included-item">
+                <div class="item-number">9</div>
+                <h4>$8.5B Funding Database</h4>
+                <p>175+ pre-vetted organizations. Government grants. ECIP programs. Non-bank lenders. Private capital sources. Everything mapped.</p>
+                <div class="original-value">PRICELESS</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <p style="font-size: 1.1rem; margin: 20px 0;">
+                <strong>Total Value: $1,097</strong><br>
+                <span style="opacity: 0.9;">You're getting 95% off today.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- VISUAL MOCKUPS -->
+<section style="padding: 60px 20px; background: #FFFFFF;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 class="section-title">See What You're Getting (Real Examples)</h2>
+        
+        <div class="mockup-gallery">
+            <div class="mockup-card">
+                <div class="mockup-image">📋</div>
+                <div class="mockup-content">
+                    <div class="mockup-title">24-Hour Inquiry Removal</div>
+                    <div class="mockup-desc">Step-by-step guide with templates and exact language to use when contacting credit bureaus.</div>
+                </div>
+            </div>
+
+            <div class="mockup-card">
+                <div class="mockup-image">🔐</div>
+                <div class="mockup-content">
+                    <div class="mockup-title">ChexSystems Escape Blueprint</div>
+                    <div class="mockup-desc">Complete guide to understanding ChexSystems blocks and the exact process to clear them.</div>
+                </div>
+            </div>
+
+            <div class="mockup-card">
+                <div class="mockup-image">⚠️</div>
+                <div class="mockup-content">
+                    <div class="mockup-title">Restricted Industries List</div>
+                    <div class="mockup-desc">Full list of industries that trigger automatic denials, plus how to reframe your business type.</div>
+                </div>
+            </div>
+
+            <div class="mockup-card">
+                <div class="mockup-image">💬</div>
+                <div class="mockup-content">
+                    <div class="mockup-title">Reconsideration Script</div>
+                    <div class="mockup-desc">Word-for-word template to negotiate higher loan amounts after initial approval.</div>
+                </div>
+            </div>
+
+            <div class="mockup-card">
+                <div class="mockup-image">✅</div>
+                <div class="mockup-content">
+                    <div class="mockup-title">Business Verification Checklist</div>
+                    <div class="mockup-desc">17-point checklist ensuring your business passes every lender verification requirement.</div>
+                </div>
+            </div>
+
+            <div class="mockup-card">
+                <div class="mockup-image">🔍</div>
+                <div class="mockup-content">
+                    <div class="mockup-title">Consumer Reporting Agencies List</div>
+                    <div class="mockup-desc">Database of 100+ agencies tracking your data, with opt-out instructions for each.</div>
+                </div>
+            </div>
+
+            <div class="mockup-card">
+                <div class="mockup-image">🏦</div>
+                <div class="mockup-content">
+                    <div class="mockup-title">30+ Credit Unions Master List</div>
+                    <div class="mockup-desc">Pre-vetted credit unions with contact info, minimum requirements, and approval rates.</div>
+                </div>
+            </div>
+
+            <div class="mockup-card">
+                <div class="mockup-image">⚡</div>
+                <div class="mockup-content">
+                    <div class="mockup-title">Capital Fast-Track Guide</div>
+                    <div class="mockup-desc">Emergency funding playbook when you need approval within 7 days.</div>
+                </div>
+            </div>
+
+            <div class="mockup-card">
+                <div class="mockup-image">💰</div>
+                <div class="mockup-content">
+                    <div class="mockup-title">$8.5B Funding Database</div>
+                    <div class="mockup-desc">175+ organizations, programs, and lenders with direct application links.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BACK TO WHAT YOU GET SECTION -->
+<section style="padding: 40px 20px; max-width: 1000px; margin: 0 auto;">
+    <div class="proof">
+        <h3>Real Questions Business Owners Ask (And Real Answers)</h3>
+
+        <div class="objection">
+            <div class="objection-q">❓ "Do I need perfect credit?"</div>
+            <div class="objection-a">No. This toolkit is designed for business owners with REAL credit issues. We show you exactly how to work around them—or fix them fast.</div>
+        </div>
+
+        <div class="objection">
+            <div class="objection-q">❓ "How long has my business been around?"</div>
+            <div class="objection-a">Doesn't matter. We access funding sources that approve 6-month-old businesses. Some approve startups. The system reveals where.</div>
+        </div>
+
+        <div class="objection">
+            <div class="objection-q">❓ "Can I use this for multiple businesses?"</div>
+            <div class="objection-a">Absolutely. The framework is repeatable. Own 3 businesses? Optimize funding for all 3. This pays for itself on your first approval.</div>
+        </div>
+
+        <div class="objection">
+            <div class="objection-q">❓ "How quickly will I get funded?"</div>
+            <div class="objection-a">Varies by profile. But we've seen same-day approvals, 24-hour closings, and consistent funding within 5-10 days using these methods.</div>
+        </div>
+
+        <div class="objection">
+            <div class="objection-q">❓ "Is this legal?"</div>
+            <div class="objection-a">100% legal. We're using publicly available funding sources and proven credit repair methods. We're not circumventing laws—we're using the ones lenders hide from you.</div>
+        </div>
+
+        <div class="objection">
+            <div class="objection-q">❓ "What if I don't qualify?"</div>
+            <div class="objection-a">With 175+ funding sources, you likely qualify somewhere. And if you don't, the toolkit shows you exactly what to fix (and how). It's the blueprint either way.</div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section class="pricing">
+    <h2 class="section-title" style="margin-bottom: 40px;">The Investment</h2>
+
+    <div class="pricing-card">
+        <div class="pricing-badge">BEST VALUE</div>
+
+        <h3 style="color: var(--secondary); font-size: 1.3rem; margin-bottom: 10px;">The Complete Funding Toolkit</h3>
+        <p style="color: var(--text-light); margin-bottom: 20px;">Everything you need to access $50K+ in capital</p>
+
+        <div class="pricing-value">
+            <div class="original-price">Was $997</div>
+            <div class="final-price">$47</div>
+            <div class="price-period">One-time payment • Lifetime access</div>
+        </div>
+
+        <div class="price-savings">
+            💰 You Save: $950 (95% off)
+        </div>
+
+        <ul class="pricing-features">
+            <li>All 9 guides & templates</li>
+            <li>30+ pre-screened lenders</li>
+            <li>175+ funding sources ($8.5B available)</li>
+            <li>Instant digital delivery</li>
+            <li>Lifetime access</li>
+            <li>Use for unlimited businesses</li>
+        </ul>
+
+        <a href="https://shesfundable.systeme.io/order" class="btn-primary" style="width: 100%; text-align: center;">GET FUNDING TOOLKIT NOW</a>
+
+        <div class="guarantee">
+            <strong>No Risk Guarantee:</strong> If you don't find at least one viable funding source, we'll refund every penny. (No questions asked.)
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 20px;">
+            🔒 Secure checkout • ✓ Money-back guarantee • ⚡ Instant access
+        </p>
+    </div>
+</section>
+
+<!-- FINAL CTA SECTION -->
+<section class="final-cta">
+    <h2>This is Your Sign</h2>
+    <p>You've been denied by banks. You've watched competitors get funded. You've felt the frustration of being locked out of capital when you needed it most.</p>
+    <p style="font-weight: bold; font-size: 1.2rem; margin: 25px 0;">Today, you have access to the system they don't want you to know about.</p>
+    <p>For $47, you get the roadmap. The exact steps. The lender list. The scripts.</p>
+    <p style="font-weight: bold; margin: 25px 0;">This changes everything.</p>
+
+    <div class="cta-buttons">
+        <a href="https://shesfundable.systeme.io/order" class="btn-primary">GET FUNDING TOOLKIT NOW</a>
+        <a href="#" class="btn-newsletter">Join ShesNewsy Newsletter For More</a>
+    </div>
+
+    <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.85;">
+        Limited time only • Spring Special pricing • Offer expires soon
+    </p>
+</section>
+
+<!-- UNIVERSAL FOOTER - Copy this entire section to all pages -->
+<footer class="universal-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About ShesFundable</h4>
+                <p>Empowering female business owners to secure the capital they deserve. Access $50K+ in funding without the traditional banking hassle.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="https://shesfundable.systeme.io/fundingtoolkit">Sales Page</a></li>
+                    <li><a href="https://shesfundable.systeme.io/order">Order Now</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-section newsletter-section">
+                <p class="newsletter-text">Join the ShesNewsy Newsletter for exclusive funding tips and strategies.</p>
+                <a href="#" class="footer-newsletter-btn">Join ShesNewsy Newsletter</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShesFundable. All rights reserved. | Helping female business owners fund their dreams.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
