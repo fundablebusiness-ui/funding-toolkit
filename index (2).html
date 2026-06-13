@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock $50K+ Funding - Funding Toolkit - ShesFundable</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #E91E8C;
+            --gold: #B8922A;
+            --secondary: #000000;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--white);
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--pink);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .scroll-to-top:hover {
+            background-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .scroll-to-top.show {
+            display: flex;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a1a1a 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--pink);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            font-weight: 900;
+        }
+
+        .hero h1 .highlight {
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-primary {
+            background-color: var(--gold);
+            color: var(--secondary);
+            padding: 18px 50px;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .cta-primary:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .trust-signals {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            font-size: 15px;
+        }
+
+        .trust-signal {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-signal span {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h2 {
+            color: var(--pink);
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background-color: #FFF0F7;
+            padding: 60px 20px;
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--pink);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .problem-card h3 {
+            color: var(--pink);
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .problem-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background-color: var(--white);
+            padding: 60px 20px;
+        }
+
+        .solution-intro {
+            background-color: #FFF0F7;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .solution-intro p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .solution-intro strong {
+            color: var(--pink);
+        }
+
+        /* Why This Matters */
+        .why-matters-section {
+            background-color: var(--light);
+            padding: 60px 20px;
+        }
+
+        .why-matters-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .why-matters-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .why-matters-content strong {
+            color: var(--pink);
+        }
+
+        /* Why Love Section */
+        .why-love-section {
+            background-color: var(--white);
+            padding: 60px 20px;
+        }
+
+        .love-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .love-card {
+            background-color: #FFF0F7;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .love-card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .love-card h3 {
+            color: var(--pink);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .love-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Who This Is For */
+        .who-section {
+            background-color: var(--light);
+            padding: 60px 20px;
+        }
+
+        .who-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .who-item {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .who-item h3 {
+            color: var(--pink);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .who-item p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* What's Included */
+        .included-section {
+            background-color: var(--white);
+            padding: 60px 20px;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .included-item {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .included-item h3 {
+            color: var(--pink);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .included-item p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Investment Section */
+        .investment-section {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .investment-section h2 {
+            color: var(--gold);
+            margin-bottom: 40px;
+        }
+
+        .pricing-card {
+            max-width: 550px;
+            margin: 0 auto;
+            background-color: var(--white);
+            color: var(--secondary);
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .pricing-card h3 {
+            color: var(--pink);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 60px;
+            color: var(--gold);
+            font-weight: bold;
+            margin: 25px 0;
+            line-height: 1;
+        }
+
+        .price-note {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .guarantee-box {
+            background-color: #FFF0F7;
+            padding: 20px;
+            border: 2px solid var(--pink);
+            border-radius: 8px;
+            margin: 25px 0;
+            color: var(--secondary);
+        }
+
+        .guarantee-box strong {
+            color: var(--pink);
+        }
+
+        .cta-section {
+            margin-top: 30px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: #FFF0F7;
+            padding: 60px 20px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            font-weight: bold;
+            color: var(--secondary);
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: var(--light);
+        }
+
+        .faq-toggle {
+            color: var(--gold);
+            font-size: 22px;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 400px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 40px 20px;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-section a:hover {
+            color: var(--pink);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid var(--gold);
+            padding-top: 20px;
+            font-size: 14px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .price {
+                font-size: 42px;
+            }
+
+            .trust-signals {
+                gap: 15px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">↑</div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">⭐ LIMITED TIME OFFER</div>
+        <h1>Unlock $50K+ In Funding <span class="highlight">Your Bank Said No To</span></h1>
+        <p>The exact blueprint business owners are using to access capital that traditional lenders won't approve. No perfect credit required. No years in business needed. No endless paperwork.</p>
+        <a href="order.html" class="cta-primary">GET INSTANT ACCESS NOW</a>
+        <div class="trust-signals">
+            <div class="trust-signal">
+                <span>⚡</span>
+                <span>Instant digital delivery</span>
+            </div>
+            <div class="trust-signal">
+                <span>🔒</span>
+                <span>100% secure</span>
+            </div>
+            <div class="trust-signal">
+                <span>✓</span>
+                <span>Money-back guarantee</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2>The Problem Most Entrepreneurs Face</h2>
+            <p class="section-subtitle">You're not alone. Here's what's holding you back from funding:</p>
+            
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <h3>❌ Bank Said No</h3>
+                    <p>Traditional lenders rejected you because you don't fit their narrow criteria. That doesn't mean funding isn't available.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Not "Fundable" Yet</h3>
+                    <p>Your business isn't properly prepared. Lenders see red flags you don't know exist. No roadmap to fix it.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Drowning in Research</h3>
+                    <p>Too many conflicting opinions. Too much outdated information. No clear path forward. No expert guidance.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Missing Information</h3>
+                    <p>Don't know what lenders actually look for. Don't understand alternative funding. Don't have the right tools.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Fear & Uncertainty</h3>
+                    <p>Worried you'll make expensive mistakes. Unsure about credit issues. Don't know if you're ready.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Wasting Time & Money</h3>
+                    <p>Bouncing between resources. Applying to wrong lenders. Getting nowhere. Exhausted and broke.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <h2>The Solution: Your Complete Funding Blueprint</h2>
+            <p class="section-subtitle">Everything you need to transform from "unfundable" to completely funding-ready</p>
+            
+            <div class="solution-intro">
+                <p><strong>Stop guessing. Stop struggling. Stop getting rejected.</strong></p>
+                <p>The Funding Readiness Toolkit™ gives you the exact same tools, checklists, templates, and strategies used by successful entrepreneurs who've accessed $50K to $500K+ in funding.</p>
+                <p>This isn't theory. This is a proven, step-by-step blueprint that works for ANY business type, credit situation, or timeline.</p>
+                <p><strong>You'll finally understand what lenders ACTUALLY look for and how to deliver it perfectly.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Matters -->
+    <section class="why-matters-section">
+        <div class="container">
+            <h2>Why This Matters Right Now</h2>
+            <div class="why-matters-content">
+                <p>The difference between getting approved and getting rejected comes down to ONE thing: <strong>preparation.</strong></p>
+                <p>Entrepreneurs who take the time to properly prepare their business get approved. They get better rates. They get bigger funding amounts. They have fewer obstacles.</p>
+                <p>Entrepreneurs who wing it? They get rejected. Over and over. They waste months. They waste money. They give up.</p>
+                <p><strong>Your Funding Readiness Toolkit™ eliminates the guesswork.</strong> It shows you EXACTLY what needs to happen, in what order, to position your business for success.</p>
+                <p>Every day you wait is another day you could be growing your business, creating jobs, and reaching your goals with the capital you deserve.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Love -->
+    <section class="why-love-section">
+        <div class="container">
+            <h2>Why Entrepreneurs Love This Toolkit</h2>
+            <div class="love-cards">
+                <div class="love-card">
+                    <div class="love-card-icon">⚡</div>
+                    <h3>Start Today, Get Results Tomorrow</h3>
+                    <p>Instant access. Instant action. Begin improving your fundability in the next 30 minutes.</p>
+                </div>
+                <div class="love-card">
+                    <div class="love-card-icon">🎯</div>
+                    <h3>Clear Step-by-Step Roadmap</h3>
+                    <p>No confusion. No guessing. Know exactly what to do and in what order to do it.</p>
+                </div>
+                <div class="love-card">
+                    <div class="love-card-icon">💰</div>
+                    <h3>Access $50K-$500K+ Opportunities</h3>
+                    <p>Discover 30+ credit unions and an $8.5B funding database ready for you.</p>
+                </div>
+                <div class="love-card">
+                    <div class="love-card-icon">✓</div>
+                    <h3>Work at Your Own Pace</h3>
+                    <p>Complete it in a week or a month. No pressure. Lifetime access to all materials.</p>
+                </div>
+                <div class="love-card">
+                    <div class="love-card-icon">🔒</div>
+                    <h3>Proven & Tested</h3>
+                    <p>Used by thousands of entrepreneurs to prepare for and WIN funding approvals.</p>
+                </div>
+                <div class="love-card">
+                    <div class="love-card-icon">📈</div>
+                    <h3>Reduce Risk & Mistakes</h3>
+                    <p>Avoid expensive errors. Get approval faster. Negotiate better terms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="who-section">
+        <div class="container">
+            <h2>Who This Is For</h2>
+            <p class="section-subtitle">This toolkit is perfect for:</p>
+            <div class="who-list">
+                <div class="who-item">
+                    <h3>🎯 Business Owners Ready to Scale</h3>
+                    <p>You need capital to grow but don't know where to start or what lenders actually want.</p>
+                </div>
+                <div class="who-item">
+                    <h3>💪 Entrepreneurs Who Got Rejected</h3>
+                    <p>Banks said no. But you haven't given up. You want to know WHY and how to fix it.</p>
+                </div>
+                <div class="who-item">
+                    <h3>🚀 Visionary Leaders</h3>
+                    <p>You have big dreams but need capital. You want to prepare properly BEFORE applying.</p>
+                </div>
+                <div class="who-item">
+                    <h3>⏰ Time-Strapped Founders</h3>
+                    <p>You're busy running your business. You need a ready-made roadmap, not endless research.</p>
+                </div>
+                <div class="who-item">
+                    <h3>🤔 Credit-Challenged Owners</h3>
+                    <p>Your credit isn't perfect. You thought funding was impossible. It's not. Learn the workarounds.</p>
+                </div>
+                <div class="who-item">
+                    <h3>💡 Smart Business Builders</h3>
+                    <p>You understand the value of preparation. You want to maximize your approval chances.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="included-section">
+        <div class="container">
+            <h2>Complete 16-Item Toolkit Included</h2>
+            <p class="section-subtitle">Everything you need to prepare, position, and get approved for funding</p>
+            <div class="included-grid">
+                <div class="included-item"><h3>✓ Business Verification Checklist</h3><p>Verify your business legitimacy</p></div>
+                <div class="included-item"><h3>✓ Business Credit Guide</h3><p>Build credit from scratch</p></div>
+                <div class="included-item"><h3>✓ Use-of-Funds Planner</h3><p>Plan capital deployment</p></div>
+                <div class="included-item"><h3>✓ Revenue Projection Template</h3><p>Forecast realistic growth</p></div>
+                <div class="included-item"><h3>✓ Cash Flow Planning Worksheet</h3><p>Master cash flow management</p></div>
+                <div class="included-item"><h3>✓ Lender Readiness Checklist</h3><p>Verify you're 100% ready</p></div>
+                <div class="included-item"><h3>✓ How Lenders Think</h3><p>Understand lender perspective</p></div>
+                <div class="included-item"><h3>✓ LLC Management After Setup</h3><p>Maintain proper LLC structure</p></div>
+                <div class="included-item"><h3>✓ Funding Glossary & Acronyms</h3><p>Master lending language</p></div>
+                <div class="included-item"><h3>✓ 30+ Credit Unions Master List</h3><p>Pre-qualified funding sources</p></div>
+                <div class="included-item"><h3>✓ $8.5B Funding Database</h3><p>Access alternative lenders</p></div>
+                <div class="included-item"><h3>✓ 24-Hour Inquiry Removal Guide</h3><p>Remove hard inquiries</p></div>
+                <div class="included-item"><h3>✓ ChexSystems Escape Blueprint</h3><p>Get approved despite issues</p></div>
+                <div class="included-item"><h3>✓ Restricted Industries Checklist</h3><p>Navigate industry restrictions</p></div>
+                <div class="included-item"><h3>✓ Proven Reconsideration Script</h3><p>Turn denials into approvals</p></div>
+                <div class="included-item"><h3>✓ BONUS: Capital Fast-Track Guide</h3><p>Speed up your timeline</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Section -->
+    <section class="investment-section">
+        <div class="container">
+            <h2>Your Investment in Funding Success</h2>
+            <div class="pricing-card">
+                <h3>Funding Readiness Toolkit™</h3>
+                <p class="price-note">Complete 16-Item Digital Bundle</p>
+                <div class="price">$97</div>
+                <p class="price-note">One-time payment • Lifetime access</p>
+                <div class="guarantee-box">
+                    <strong>✓ 30-Day Money-Back Guarantee</strong><br>
+                    Not satisfied? Full refund, no questions asked (within 7 days of purchase)
+                </div>
+                <p style="color: #666; font-size: 14px; margin-bottom: 20px;">
+                    🎟️ Have a coupon code? Enter it at checkout for a discount
+                </p>
+                <div class="cta-section">
+                    <a href="order.html" class="cta-primary" style="width: 100%; display: block; padding: 18px 20px;">GET INSTANT ACCESS NOW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    When will I get access?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Instant! You'll receive immediate access to all 16 files via email and our download portal. Start working through the materials within minutes of purchase.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is this actually going to help me get funding?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    This toolkit significantly improves your chances by showing you exactly what lenders look for and how to deliver it. We can't guarantee funding (that's up to lenders), but we've helped thousands prepare for approvals. The better prepared you are, the higher your approval odds.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What if my credit is bad?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Perfect! This toolkit includes specific strategies for entrepreneurs with credit challenges. You'll learn alternative lenders who don't require perfect credit, how to explain credit issues, and how to build credibility despite your past.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do I need to have been in business for years?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    No! Many entrepreneurs get funded in their first few years. This toolkit shows you how to qualify even as a newer business. You'll learn which lenders accept newer businesses and how to position yourself competitively.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I get a refund if I'm not happy?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! We offer a 30-day money-back guarantee within 7 days of purchase. If you're not satisfied, contact us for a full refund, no questions asked.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How long does it take to work through the toolkit?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Most entrepreneurs complete it in 1-2 weeks working 1-2 hours daily. But it's lifetime access—work at your own pace. Some take a week, some take a month. There's no time limit.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What if I have technical issues?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Contact us at fundablebusiness@gmail.com with details about your issue. We typically respond within 24 hours and will ensure you get access to all your files immediately.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I share this with my business partner or team?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    These materials are for your personal use only. Sharing, distributing, or selling violates our terms. If your team needs access, please have them purchase their own license.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About ShesFundable</h4>
+                <p>She didn't get denied because she isn't capable. She got denied because her business wasn't built to say YES to. ShesFundable helps to fix that. Access $50K+ in funding without traditional banking hassle.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:fundablebusiness@gmail.com">fundablebusiness@gmail.com</a><br>
+                    <strong>Address:</strong> 8735 Dunwoody Pl Ste R, Atlanta GA 30350
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a onclick="window.open('legal.html', '_blank'); return false;">Terms & Conditions</a></li>
+                    <li><a onclick="window.open('legal.html', '_blank'); return false;">Privacy Policy</a></li>
+                    <li><a onclick="window.open('legal.html', '_blank'); return false;">Refund Policy</a></li>
+                    <li><a onclick="window.open('legal.html', '_blank'); return false;">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ShesFundable. All rights reserved.</p>
+            <p>Helping female business owners fix their businesses to fund their dreams.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const toggle = this.querySelector('.faq-toggle');
+
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    if (a !== answer) {
+                        a.classList.remove('active');
+                        a.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+                    }
+                });
+
+                answer.classList.toggle('active');
+                toggle.textContent = answer.classList.contains('active') ? '−' : '+';
+            });
+        });
+    </script>
+
+</body>
+</html>
