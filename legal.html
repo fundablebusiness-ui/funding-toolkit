@@ -1,241 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Legal — ShesFundable.Ready</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --pink: #FF0066; --black: #000; --white: #fff;
-    --gray: #F7F7F7; --gray-mid: #e8e8e8; --text-muted: #555;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Documents - ShesFundable</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--gray-mid);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5%; height: 64px;
-  }
-  .nav-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.3rem; color: var(--black); text-decoration: none; }
-  .nav-logo span { color: var(--pink); }
-  .nav-back { font-size: 0.875rem; font-weight: 600; color: var(--pink); text-decoration: none; }
-  .nav-back:hover { text-decoration: underline; }
+        :root {
+            --pink: #E91E8C;
+            --gold: #B8922A;
+            --dark: #1A1A1A;
+            --light: #F5F5F5;
+            --text: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+        }
 
-  .legal-hero {
-    margin-top: 64px; background: var(--black);
-    padding: 60px 5%; text-align: center;
-  }
-  .legal-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--white); margin-bottom: 0.5rem;
-  }
-  .legal-hero p { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-  .legal-nav {
-    background: var(--gray); padding: 1.5rem 5%;
-    display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
-    border-bottom: 1px solid var(--gray-mid); position: sticky; top: 64px; z-index: 50;
-  }
-  .legal-nav a { font-size: 0.875rem; font-weight: 600; color: var(--black); text-decoration: none; transition: color .2s; }
-  .legal-nav a:hover { color: var(--pink); }
+        /* ── HEADER ── */
+        header {
+            background: #000;
+            border-bottom: 3px solid var(--gold);
+            padding: 20px;
+            text-align: center;
+        }
 
-  .legal-content { max-width: 720px; margin: 0 auto; padding: 60px 5%; }
+        .logo {
+            color: var(--pink);
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
 
-  .legal-section { margin-bottom: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--gray-mid); }
-  .legal-section:last-child { border-bottom: none; }
+        header nav a {
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 14px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
 
-  .legal-section-label {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--pink); margin-bottom: 0.75rem;
-  }
-  .legal-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
-  .legal-section h3 {
-    font-size: 1.05rem; font-weight: 700; margin: 1.75rem 0 0.6rem; color: var(--black);
-  }
-  .legal-section p {
-    font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem;
-  }
-  .legal-section ul {
-    list-style: none; padding-left: 0; margin-bottom: 1rem;
-  }
-  .legal-section ul li {
-    font-size: 0.95rem; color: var(--text-muted); line-height: 1.8;
-    padding-left: 1.25rem; position: relative; margin-bottom: 0.4rem;
-  }
-  .legal-section ul li::before { content: '•'; position: absolute; left: 0; color: var(--pink); }
-  .legal-section .effective-date { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+        header nav a:hover { color: var(--pink); }
 
-  footer {
-    background: var(--black); color: rgba(255,255,255,0.5);
-    padding: 2rem 5%; text-align: center; font-size: 0.8rem;
-  }
-  footer a { color: var(--pink); text-decoration: none; }
-  footer p { margin-bottom: 0.5rem; }
-</style>
+        /* ── TOC ── */
+        .toc-bar {
+            background: var(--light);
+            border-bottom: 2px solid var(--gold);
+            padding: 14px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .toc-bar a {
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .toc-bar a:hover { color: var(--pink); }
+
+        /* ── LAYOUT ── */
+        .page-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 50px 24px 80px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--pink);
+            margin-bottom: 6px;
+        }
+
+        .page-subtitle {
+            color: var(--text-light);
+            font-size: 15px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 20px;
+        }
+
+        /* ── SECTIONS ── */
+        .legal-section {
+            margin-bottom: 60px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            background: #000;
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 6px 6px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 0;
+        }
+
+        .section-icon { font-size: 22px; }
+
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .section-body {
+            background: var(--light);
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            padding: 30px;
+        }
+
+        .effective-date {
+            font-size: 13px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .intro-box {
+            background: var(--white);
+            border-left: 4px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 24px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        h3 {
+            color: var(--pink);
+            font-size: 16px;
+            margin: 24px 0 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 14px;
+            color: var(--text);
+        }
+
+        ul {
+            margin: 8px 0 16px 20px;
+        }
+
+        ul li {
+            font-size: 15px;
+            line-height: 1.75;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .highlight-box {
+            background: #FFF0F7;
+            border: 2px solid var(--pink);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .highlight-box p:last-child { margin-bottom: 0; }
+
+        .warning-box {
+            background: #FFF8E1;
+            border-left: 4px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 6px 6px 0;
+            margin: 20px 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .contact-box {
+            background: var(--white);
+            border: 2px solid var(--gold);
+            border-radius: 6px;
+            padding: 20px 24px;
+            margin-top: 24px;
+        }
+
+        .contact-box h4 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .contact-box p {
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .contact-box a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .contact-box a:hover { color: var(--pink); }
+
+        /* ── BACK TO TOP ── */
+        .back-top {
+            text-align: right;
+            margin-top: 16px;
+        }
+
+        .back-top a {
+            color: var(--gold);
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-top a:hover { color: var(--pink); }
+
+        /* ── BACK BUTTON ── */
+        .btn-back {
+            display: inline-block;
+            background: var(--gold);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            background: var(--pink);
+            color: var(--white);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #000;
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 3px solid var(--gold);
+            font-size: 13px;
+        }
+
+        footer p { color: rgba(255,255,255,0.6); }
+
+        @media (max-width: 600px) {
+            .toc-bar a { display: inline-block; margin: 5px 8px; }
+            .section-body { padding: 20px 16px; }
+            .page-title { font-size: 26px; }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <a href="shesfundable-300-offer.html" class="nav-logo">Shes<span>Fundable</span>.Ready</a>
-  <a href="shesfundable-300-offer.html" class="nav-back">← Back to Home</a>
-</nav>
+<header>
+    <div class="logo">🌸 ShesFundable</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="order.html">Order</a>
+    </nav>
+</header>
 
-<div class="legal-hero">
-  <h1>Legal Information</h1>
-  <p>Terms &amp; Conditions · Privacy Policy · Disclaimer</p>
+<div class="toc-bar">
+    <a href="#terms">Terms & Conditions</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#refund">Refund Policy</a>
+    <a href="#disclaimer">Disclaimer</a>
 </div>
 
-<div class="legal-nav">
-  <a href="#terms">Terms &amp; Conditions</a>
-  <a href="#privacy">Privacy Policy</a>
-  <a href="#disclaimer">Disclaimer</a>
-</div>
+<div class="page-wrap">
 
-<div class="legal-content">
+    <h1 class="page-title">Legal Documents</h1>
+    <p class="page-subtitle">ShesFundable — 8735 Dunwoody Pl Ste R, Atlanta GA 30350 &nbsp;|&nbsp; fundablebusiness@gmail.com</p>
 
-  <!-- TERMS & CONDITIONS -->
-  <div class="legal-section" id="terms">
-    <p class="legal-section-label">Legal</p>
-    <h2>Terms &amp; Conditions</h2>
-    <p class="effective-date">Effective Date: January 1, 2026 | Last Updated: June 2026</p>
+    <a href="index.html" class="btn-back">← Back to Home</a>
 
-    <p>Please read these Terms and Conditions ("Terms") carefully before purchasing or using any services offered by ShesFundable.Ready ("Company," "we," "us," or "our"). By completing a purchase or using our services, you agree to be bound by these Terms.</p>
+    <!-- ══════════════════════════════════════ -->
+    <!-- TERMS AND CONDITIONS                   -->
+    <!-- ══════════════════════════════════════ -->
+    <div class="legal-section" id="terms">
+        <div class="section-header">
+            <span class="section-icon">📄</span>
+            <h2>Terms and Conditions</h2>
+        </div>
+        <div class="section-body">
+            <p class="effective-date">Effective Date: January 30, 2026</p>
 
-    <h3>1. Services Provided</h3>
-    <p>ShesFundable.Ready offers the Funding Readiness Blueprint™, an educational and informational service designed to help entrepreneurs assess their business funding readiness. Services include a Fundability Assessment, Funding Readiness Score, Personalized Fundability Report, Funding Match Report, Hidden Credit Union Network access, Funding Source Database access, Fundability Toolkit™, and a 20-Minute 1:1 Consultation.</p>
+            <div class="intro-box">
+                Welcome to ShesFundable (and all related programs and offers). By purchasing the Funding Readiness Toolkit™ or any related products, services, consultations, reports, resources, or digital materials, you agree to these Terms and Conditions.
+            </div>
 
-    <h3>2. Not Financial, Legal, or Professional Advice</h3>
-    <p>All content, reports, tools, and consultations provided by ShesFundable.Ready are for educational and informational purposes only. ShesFundable.Ready is not a lender, financial institution, financial advisor, attorney, accountant, or credit counselor. Nothing provided constitutes legal, tax, accounting, investment, or financial advice. You should consult qualified professionals before making financial decisions.</p>
+            <h3>1. Services</h3>
+            <p>ShesFundable provides educational, informational, and business readiness services designed to help entrepreneurs better understand their preparedness for funding opportunities. Services may include:</p>
+            <ul>
+                <li>Funding Readiness Toolkit™ (20-item digital bundle)</li>
+                <li>Fundability Assessment</li>
+                <li>Funding Readiness Score</li>
+                <li>Personalized Fundability Report</li>
+                <li>Funding Match Report</li>
+                <li>Funding Source Database</li>
+                <li>Credit Union Network</li>
+                <li>Consultations and educational resources</li>
+            </ul>
 
-    <h3>3. No Guarantee of Funding</h3>
-    <p>ShesFundable.Ready makes no representations or warranties that use of our services will result in funding approval, increased credit, loan approval, grant approval, or any specific financial outcome. Funding decisions are made solely by individual lenders, investors, grantors, and funding providers at their sole discretion.</p>
+            <h3>2. No Funding Guarantee</h3>
+            <ul>
+                <li>ShesFundable is not a lender, broker, bank, investor, grantor, or funding provider.</li>
+                <li>No funding approval, funding amount, grant award, interest rate, loan terms, or financing outcome is guaranteed.</li>
+                <li>All funding decisions are made independently by third-party funding providers.</li>
+            </ul>
 
-    <h3>4. Payment Terms</h3>
-    <p>All fees are due at the time of purchase. The Funding Readiness Blueprint™ is a one-time payment of $300. All prices are in U.S. dollars.</p>
+            <h3>3. Client Responsibilities</h3>
+            <ul>
+                <li>Clients agree to provide accurate, complete, and truthful information.</li>
+                <li>ShesFundable is not responsible for recommendations or assessments based on inaccurate or incomplete information supplied by the client.</li>
+            </ul>
 
-    <h3>5. Refund Policy</h3>
-    <p>All sales are final. Due to the customized nature of the Funding Readiness Blueprint™ and the immediate delivery of personalized digital resources, no refunds will be provided once work has commenced or deliverables have been delivered. We encourage you to review all service details and reach out with questions before purchasing.</p>
+            <h3>4. Delivery</h3>
+            <ul>
+                <li>Digital products are delivered immediately upon payment confirmation via Google Drive.</li>
+                <li>Consultations are scheduled separately based on appointment availability.</li>
+            </ul>
 
-    <h3>6. Delivery of Services</h3>
-    <p>Digital deliverables will be provided within 48 hours of completing your intake questionnaire. The 1:1 consultation is scheduled separately using our online calendar following delivery of your digital package.</p>
+            <h3>5. Intellectual Property</h3>
+            <ul>
+                <li>All reports, guides, databases, checklists, templates, resources, and materials are the intellectual property of ShesFundable.</li>
+                <li>Materials are licensed for individual client use only.</li>
+                <li>Clients may not reproduce, distribute, sell, share, publish, modify, or create derivative works without written permission.</li>
+            </ul>
 
-    <h3>7. Intellectual Property</h3>
-    <p>All content, reports, tools, databases, guides, checklists, and materials provided are the intellectual property of ShesFundable.Ready and are licensed for your personal business use only. You may not reproduce, resell, distribute, or share materials without prior written permission.</p>
+            <h3>6. Limitation of Liability</h3>
+            <p>To the fullest extent permitted by law, ShesFundable shall not be liable for any direct, indirect, incidental, consequential, special, or punitive damages arising from the use of its services, recommendations, reports, or resources.</p>
 
-    <h3>8. Limitation of Liability</h3>
-    <p>To the fullest extent permitted by law, ShesFundable.Ready shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services, including but not limited to loss of funding opportunities, loss of profits, or business interruption.</p>
+            <h3>7. Indemnification</h3>
+            <p>Clients agree to indemnify and hold harmless ShesFundable, its owners, employees, contractors, affiliates, and representatives from any claims, losses, liabilities, damages, costs, or expenses arising from the client's use of services.</p>
 
-    <h3>9. Accuracy of Information</h3>
-    <p>The quality and accuracy of your personalized deliverables depend on the accuracy and completeness of the information you provide in your intake questionnaire. ShesFundable.Ready is not responsible for outcomes resulting from inaccurate or incomplete information provided by the client.</p>
+            <h3>8. Governing Law</h3>
+            <p>These Terms shall be governed by the laws of the State of Georgia without regard to conflict of law principles.</p>
 
-    <h3>10. Governing Law</h3>
-    <p>These Terms shall be governed by and construed in accordance with the laws of the United States. Any disputes shall be resolved through binding arbitration.</p>
+            <h3>9. Changes to Terms</h3>
+            <p>ShesFundable reserves the right to update these Terms at any time. Continued use of services constitutes acceptance of any revisions.</p>
 
-    <h3>11. Changes to Terms</h3>
-    <p>We reserve the right to update these Terms at any time. Continued use of our services constitutes acceptance of any updated Terms.</p>
+            <div class="contact-box">
+                <h4>Questions about these Terms?</h4>
+                <p><strong>Email:</strong> <a href="mailto:fundablebusiness@gmail.com">fundablebusiness@gmail.com</a></p>
+                <p><strong>Address:</strong> 8735 Dunwoody Pl Ste R, Atlanta GA 30350</p>
+            </div>
 
-    <h3>12. Contact</h3>
-    <p>For questions regarding these Terms, contact us at <a href="mailto:fundablebusiness@gmail.com" style="color:var(--pink);">fundablebusiness@gmail.com</a>.</p>
-  </div>
+            <div class="back-top"><a href="#top">↑ Back to top</a></div>
+        </div>
+    </div>
 
-  <!-- PRIVACY POLICY -->
-  <div class="legal-section" id="privacy">
-    <p class="legal-section-label">Legal</p>
-    <h2>Privacy Policy</h2>
-    <p class="effective-date">Effective Date: January 1, 2026 | Last Updated: June 2026</p>
+    <!-- ══════════════════════════════════════ -->
+    <!-- PRIVACY POLICY                         -->
+    <!-- ══════════════════════════════════════ -->
+    <div class="legal-section" id="privacy">
+        <div class="section-header">
+            <span class="section-icon">🔒</span>
+            <h2>Privacy Policy</h2>
+        </div>
+        <div class="section-body">
 
-    <p>ShesFundable.Ready ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you use our website or services.</p>
+            <div class="intro-box">
+                ShesFundable respects your privacy and is committed to protecting your personal information. This policy explains what we collect, how we use it, and your rights.
+            </div>
 
-    <h3>1. Information We Collect</h3>
-    <p>We may collect the following types of information:</p>
-    <ul>
-      <li><strong>Personal Identification Information:</strong> Name, email address, phone number, and business information provided during purchase or intake.</li>
-      <li><strong>Payment Information:</strong> Processed securely through third-party payment processors. We do not store credit card information.</li>
-      <li><strong>Business Information:</strong> Details about your business provided in the intake questionnaire, used solely to prepare your personalized deliverables.</li>
-      <li><strong>Usage Data:</strong> Information about how you interact with our website, collected through cookies and analytics tools.</li>
-    </ul>
+            <h3>Information We Collect</h3>
+            <p>We may collect the following when you use our services or make a purchase:</p>
+            <ul>
+                <li>Name and contact information (email, phone number)</li>
+                <li>Business name and business information</li>
+                <li>Funding goals and financial context</li>
+                <li>Payment information (processed securely via PayPal)</li>
+                <li>Website usage data (pages visited, time on site)</li>
+            </ul>
 
-    <h3>2. How We Use Your Information</h3>
-    <p>We use the information we collect to:</p>
-    <ul>
-      <li>Prepare and deliver your personalized Funding Readiness Blueprint™</li>
-      <li>Schedule and conduct your 1:1 consultation</li>
-      <li>Communicate with you regarding your order and services</li>
-      <li>Send informational and educational emails (you may opt out at any time)</li>
-      <li>Improve our services and website</li>
-    </ul>
+            <h3>How We Use Your Information</h3>
+            <ul>
+                <li>To deliver purchased digital products and services</li>
+                <li>To send order confirmations and download access</li>
+                <li>To provide customer support</li>
+                <li>To improve our products and services</li>
+                <li>To send educational content and service-related communications</li>
+            </ul>
 
-    <h3>3. Information Sharing</h3>
-    <p>We do not sell, trade, or rent your personal information to third parties. We may share information with trusted service providers (such as payment processors and email platforms) solely for the purpose of delivering our services. These providers are contractually obligated to protect your information.</p>
+            <h3>Information Sharing</h3>
+            <ul>
+                <li>We do not sell your personal information to third parties.</li>
+                <li>Information may be shared with trusted service providers (such as PayPal) solely to process payments and deliver services.</li>
+            </ul>
 
-    <h3>4. Data Security</h3>
-    <p>We implement reasonable security measures to protect your information. However, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security.</p>
+            <h3>Data Security</h3>
+            <p>We use reasonable measures to protect your information. However, no method of electronic transmission or storage is 100% secure. We cannot guarantee absolute security.</p>
 
-    <h3>5. Data Retention</h3>
-    <p>We retain your personal and business information for as long as necessary to deliver services and comply with legal obligations. You may request deletion of your information by contacting us directly.</p>
+            <h3>Email Communications</h3>
+            <p>By providing your email address, you consent to receiving order confirmations and service-related communications. You may unsubscribe from marketing emails at any time using the unsubscribe link in any email.</p>
 
-    <h3>6. Your Rights</h3>
-    <p>You have the right to access, correct, or request deletion of your personal information. To exercise these rights, contact us at <a href="mailto:fundablebusiness@gmail.com" style="color:var(--pink);">fundablebusiness@gmail.com</a>.</p>
+            <h3>Cookies and Analytics</h3>
+            <p>Our website may use cookies and analytics tools to understand how visitors use our site. You may disable cookies in your browser settings, though some features may not function properly.</p>
 
-    <h3>7. Cookies</h3>
-    <p>Our website may use cookies to enhance your browsing experience and collect usage analytics. You may disable cookies through your browser settings, though some site features may be affected.</p>
+            <h3>Your Rights</h3>
+            <p>You may request access to, correction of, or deletion of your personal information at any time by contacting us.</p>
 
-    <h3>8. Third-Party Links</h3>
-    <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of those sites.</p>
+            <div class="contact-box">
+                <h4>Privacy Inquiries</h4>
+                <p><strong>Email:</strong> <a href="mailto:fundablebusiness@gmail.com">fundablebusiness@gmail.com</a></p>
+                <p><strong>Address:</strong> 8735 Dunwoody Pl Ste R, Atlanta GA 30350</p>
+            </div>
 
-    <h3>9. Children's Privacy</h3>
-    <p>Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from minors.</p>
+            <div class="back-top"><a href="#top">↑ Back to top</a></div>
+        </div>
+    </div>
 
-    <h3>10. Changes to This Policy</h3>
-    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the updated policy on our website.</p>
+    <!-- ══════════════════════════════════════ -->
+    <!-- REFUND POLICY                          -->
+    <!-- ══════════════════════════════════════ -->
+    <div class="legal-section" id="refund">
+        <div class="section-header">
+            <span class="section-icon">💳</span>
+            <h2>Refund Policy</h2>
+        </div>
+        <div class="section-body">
 
-    <h3>11. Contact</h3>
-    <p>For privacy-related inquiries, contact us at <a href="mailto:fundablebusiness@gmail.com" style="color:var(--pink);">fundablebusiness@gmail.com</a>.</p>
-  </div>
+            <div class="warning-box">
+                <p>⚠️ All sales are final on digital products.</p>
+                <p>Because you receive immediate access to all downloadable files at the time of purchase, we are unable to offer refunds, chargebacks, cancellations, or credits once an order has been submitted.</p>
+            </div>
 
-  <!-- DISCLAIMER -->
-  <div class="legal-section" id="disclaimer">
-    <p class="legal-section-label">Legal</p>
-    <h2>Disclaimer</h2>
-    <p class="effective-date">Effective Date: January 1, 2026</p>
+            <h3>Final Sale — Digital Products</h3>
+            <p>The Funding Readiness Toolkit™ is a digital product delivered immediately upon payment confirmation. Due to its instant-access nature, all sales are final.</p>
 
-    <p>ShesFundable.Ready is not a lender and does not provide legal, tax, accounting, or financial advice. Funding approval is determined solely by individual funding providers. No funding approval, funding amount, or financing outcome is guaranteed. All information provided is for educational and informational purposes only.</p>
+            <h3>No Refunds After Purchase</h3>
+            <ul>
+                <li>Once an order is submitted and payment is confirmed, no refunds will be issued.</li>
+                <li>All 20 digital files are delivered immediately via Google Drive.</li>
+                <li>The nature of instant digital delivery makes reversal impossible.</li>
+            </ul>
 
-    <h3>Educational Purpose</h3>
-    <p>All reports, tools, resources, scores, databases, and content provided by ShesFundable.Ready are intended solely for educational and informational purposes. They are designed to help entrepreneurs better understand the general concept of funding readiness and are not a substitute for professional financial, legal, or business advice.</p>
+            <h3>Incomplete Information</h3>
+            <p>If a client fails to provide information required to complete a service (such as a consultation), delivery timelines may be delayed until all requested information is received. This does not constitute grounds for a refund.</p>
 
-    <h3>No Professional Relationship</h3>
-    <p>Use of ShesFundable.Ready services does not create a professional, fiduciary, or advisory relationship of any kind between ShesFundable.Ready and the client. We are not acting as your financial advisor, lender, credit counselor, broker, attorney, or accountant.</p>
+            <h3>Consultation Sessions</h3>
+            <p>Consultation sessions (if applicable) must be scheduled within 90 days of purchase unless otherwise agreed in writing.</p>
 
-    <h3>Results May Vary</h3>
-    <p>Individual results will vary based on business circumstances, lender requirements, economic conditions, and many other factors outside our control. References to funding amounts, credit unions, funding databases, or funding categories are provided for informational purposes and do not represent a guarantee of availability or approval.</p>
+            <h3>Service Termination</h3>
+            <p>ShesFundable reserves the right to refuse or terminate service if abusive, fraudulent, or unlawful conduct is suspected.</p>
 
-    <h3>Third-Party Resources</h3>
-    <p>Databases, credit union lists, funding program information, and other third-party resources provided as part of our services are compiled for informational purposes only. ShesFundable.Ready does not endorse any specific lender, credit union, funding program, or financial institution, and cannot guarantee the accuracy, availability, or terms of any third-party resource.</p>
+            <h3>Questions Before You Buy</h3>
+            <p>Please review all product information carefully before purchasing. If you have questions about whether this toolkit is right for you, contact us before completing your order.</p>
 
-    <h3>Forward-Looking Statements</h3>
-    <p>Any statements about potential funding outcomes, improvement in funding readiness, or future opportunities are forward-looking and subject to change based on market conditions, lender requirements, and individual business circumstances.</p>
+            <div class="contact-box">
+                <h4>Questions About This Policy?</h4>
+                <p><strong>Email:</strong> <a href="mailto:fundablebusiness@gmail.com">fundablebusiness@gmail.com</a></p>
+                <p><strong>Address:</strong> 8735 Dunwoody Pl Ste R, Atlanta GA 30350</p>
+            </div>
 
-    <h3>Contact</h3>
-    <p>Questions? Reach us at <a href="mailto:fundablebusiness@gmail.com" style="color:var(--pink);">fundablebusiness@gmail.com</a>.</p>
-  </div>
+            <div class="back-top"><a href="#top">↑ Back to top</a></div>
+        </div>
+    </div>
 
-</div>
+    <!-- ══════════════════════════════════════ -->
+    <!-- DISCLAIMER                             -->
+    <!-- ══════════════════════════════════════ -->
+    <div class="legal-section" id="disclaimer">
+        <div class="section-header">
+            <span class="section-icon">⚠️</span>
+            <h2>Disclaimer</h2>
+        </div>
+        <div class="section-body">
+
+            <div class="highlight-box">
+                <p>⚠️ IMPORTANT: ShesFundable provides educational, informational, and business readiness services only.</p>
+                <p>We do not provide legal, tax, accounting, financial, investment, lending, or credit repair services.</p>
+            </div>
+
+            <h3>What ShesFundable Is NOT</h3>
+            <ul>
+                <li>A lender, bank, or credit provider</li>
+                <li>An investment advisor or financial advisor</li>
+                <li>A tax advisor, accountant, or CPA</li>
+                <li>A lawyer or legal advisor</li>
+                <li>A credit repair company</li>
+                <li>A government agency or official funding authority</li>
+            </ul>
+
+            <h3>What ShesFundable IS</h3>
+            <ul>
+                <li>An educational resource platform for entrepreneurs</li>
+                <li>A provider of business readiness tools, guides, and databases</li>
+                <li>A source of informational content about funding preparation and awareness</li>
+            </ul>
+
+            <h3>No Funding Guarantee</h3>
+            <div class="highlight-box">
+                <p>No funding approval, funding amount, interest rate, loan terms, grant award, or financing outcome is guaranteed.</p>
+                <p>All funding decisions are made independently by lenders, investors, grantors, and third-party funding providers based on their own criteria.</p>
+            </div>
+
+            <h3>Information Accuracy & Individual Results</h3>
+            <p>All resources, databases, checklists, and guides are provided for educational purposes only. Results will vary based on individual business circumstances, credit history, market conditions, and the policies of individual funding providers.</p>
+            <p>Clients are solely responsible for verifying information and conducting their own due diligence before making any business or financial decision.</p>
+
+            <h3>Seek Professional Advice</h3>
+            <p>For matters requiring professional expertise, please consult qualified professionals:</p>
+            <ul>
+                <li>Legal matters → consult a licensed attorney</li>
+                <li>Tax matters → consult a CPA or tax advisor</li>
+                <li>Investment decisions → consult a licensed financial advisor</li>
+                <li>Credit and financing → consult your lender or banker directly</li>
+            </ul>
+
+            <h3>Acknowledgment</h3>
+            <p>By purchasing and using ShesFundable products, you acknowledge that all materials are for educational purposes only and that no outcome — including funding approval — is guaranteed. You assume full responsibility for how you use the information and resources provided.</p>
+
+            <div class="contact-box">
+                <h4>Questions About This Disclaimer?</h4>
+                <p><strong>Email:</strong> <a href="mailto:fundablebusiness@gmail.com">fundablebusiness@gmail.com</a></p>
+                <p><strong>Address:</strong> 8735 Dunwoody Pl Ste R, Atlanta GA 30350</p>
+            </div>
+
+            <div class="back-top"><a href="#top">↑ Back to top</a></div>
+        </div>
+    </div>
+
+    <a href="index.html" class="btn-back">← Back to Home</a>
+
+</div><!-- end page-wrap -->
 
 <footer>
-  <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:rgba(255,255,255,0.8); margin-bottom:0.5rem;">Shes<span style="color:var(--pink);">Fundable</span>.Ready</p>
-  <p><a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-and-conditions">Terms &amp; Conditions</a></p>
-  <p style="margin-top:0.75rem;">© 2026 ShesFundable.Ready. All Rights Reserved.</p>
-  <p style="margin-top:0.5rem; font-style:italic;">Fund Her &amp; Change the World™</p>
+    <p>© 2026 ShesFundable. All rights reserved.</p>
+    <p style="margin-top:8px;">Helping female business owners fix their businesses to fund their dreams.</p>
 </footer>
 
 </body>
