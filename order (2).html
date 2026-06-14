@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Funding Toolkit | ShesFundable</title>
+    <!-- PayPal LIVE SDK — currency=USD forces live environment -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AUOf9beJsggndHK3EOTOnFIavh0wEkrRpP4TL9OlOs9JbDkl0FH5Pv28Qy3BiILDQcFvDY9kdfWzkxEt&currency=USD&intent=capture"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --pink: #E91E8C;
+            --gold: #B8922A;
+            --dark: #000000;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+            --error: #C0392B;
+            --error-bg: #FDECEA;
+            --success: #27AE60;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--dark);
+            border-bottom: 3px solid var(--gold);
+            padding: 18px 20px;
+            text-align: center;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo {
+            color: var(--pink);
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .back-home {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid var(--gold);
+            padding: 7px 16px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .back-home:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 1150px;
+            margin: 30px auto;
+            padding: 0 20px 60px;
+        }
+
+        .checkout-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        /* ── ORDER SUMMARY ── */
+        .order-summary {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 28px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .order-summary h2 {
+            color: var(--pink);
+            font-size: 20px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+        }
+
+        .product-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .product-name {
+            font-weight: bold;
+            font-size: 15px;
+            color: var(--dark);
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 15px;
+            color: var(--dark);
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .item-list {
+            margin: 14px 0;
+            padding: 14px;
+            background: var(--light);
+            border-radius: 6px;
+        }
+
+        .item-list p.list-heading {
+            font-weight: bold;
+            font-size: 13px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .item-list p.list-item {
+            font-size: 12.5px;
+            color: #555;
+            line-height: 1.9;
+        }
+
+        .delivery-note {
+            background: #FFF0F7;
+            border: 1px solid var(--pink);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 13px;
+            text-align: center;
+            color: #333;
+            margin-top: 12px;
+        }
+
+        .summary-totals {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 2px solid var(--gold);
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .discount-row {
+            display: none;
+            color: var(--pink);
+            font-weight: bold;
+        }
+
+        .final-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--pink);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .coupon-badge {
+            display: none;
+            margin-top: 10px;
+            background: #FFE8F0;
+            color: var(--pink);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .secure-note {
+            margin-top: 16px;
+            background: var(--light);
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 13px;
+            text-align: center;
+            color: #555;
+        }
+
+        /* ── CHECKOUT FORM ── */
+        .checkout-form {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        .checkout-form h2 {
+            color: var(--pink);
+            font-size: 22px;
+            margin-bottom: 22px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 12px;
+        }
+
+        .form-section {
+            margin-bottom: 26px;
+        }
+
+        .form-section h3 {
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .form-row.full { grid-template-columns: 1fr; }
+
+        .form-group { display: flex; flex-direction: column; }
+
+        label {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            padding: 11px 13px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: var(--white);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(184,146,42,0.15);
+        }
+
+        input.field-error, select.field-error {
+            border-color: var(--error);
+            box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
+        }
+
+        /* ── COUPON ── */
+        .coupon-wrap {
+            background: #FFF0F7;
+            border-radius: 6px;
+            padding: 14px;
+        }
+
+        .coupon-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .coupon-input-group input {
+            flex: 1;
+        }
+
+        .apply-btn {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            border-radius: 5px;
+            padding: 11px 18px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .apply-btn:hover { background: var(--pink); color: var(--white); }
+        .apply-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* ── PRICE SUMMARY ── */
+        .price-summary {
+            background: var(--light);
+            border-radius: 6px;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .price-summary .amount { color: var(--pink); font-size: 20px; }
+
+        /* ── LEGAL AGREEMENTS ── */
+        .legal-agreements {
+            background: #FFF0F7;
+            border: 2px solid #f5c6d8;
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .legal-agreements.has-error {
+            border-color: var(--error);
+            background: var(--error-bg);
+        }
+
+        .legal-agreements h3 {
+            border-bottom: none;
+            color: var(--dark);
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        .legal-notice {
+            display: none;
+            background: var(--error);
+            color: var(--white);
+            border-radius: 5px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 14px;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legal-notice.show { display: flex; }
+
+        .agreement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .agreement-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--pink);
+        }
+
+        .agreement-item label {
+            font-weight: normal;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .agreement-item.unchecked label { color: var(--error); }
+
+        .agreement-item a {
+            color: var(--gold);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .agreement-item a:hover { color: var(--pink); }
+
+        /* ── ERROR / SUCCESS MESSAGES ── */
+        .form-error {
+            background: var(--error-bg);
+            color: var(--error);
+            border: 1px solid var(--error);
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        /* ── PAYPAL ── */
+        #paypal-button-container {
+            margin-top: 16px;
+        }
+
+        #paypal-button-container.disabled-paypal {
+            opacity: 0.4;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+
+        .paypal-blocked-msg {
+            display: none;
+            background: var(--error-bg);
+            border: 1px solid var(--error);
+            color: var(--error);
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .secure-footer {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 16px;
+        }
+
+        /* ── PAGE FOOTER ── */
+        .site-footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 24px 20px;
+            border-top: 3px solid var(--gold);
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 820px) {
+            .checkout-wrapper { grid-template-columns: 1fr; }
+            .order-summary { position: static; }
+        }
+
+        @media (max-width: 480px) {
+            .form-row { grid-template-columns: 1fr; }
+            .coupon-input-group { flex-direction: column; }
+            .header-inner { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+        <div class="logo">🌸 ShesFundable</div>
+        <a href="index.html" class="back-home">← Back to Home</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="checkout-wrapper">
+
+        <!-- ORDER SUMMARY -->
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+
+            <div class="product-row">
+                <span class="product-name">Funding Readiness Toolkit™</span>
+                <span class="product-price">$97.00</span>
+            </div>
+
+            <div class="item-list">
+                <p class="list-heading">What's Included (20 Items):</p>
+                <p class="list-item">
+                    ✓ Business Verification Checklist<br>
+                    ✓ Business Credit Guide<br>
+                    ✓ Use-of-Funds Planner<br>
+                    ✓ Revenue Projection Template<br>
+                    ✓ Cash Flow Planning Worksheet<br>
+                    ✓ Lender Readiness Checklist<br>
+                    ✓ How Lenders Think<br>
+                    ✓ LLC Management After Setup<br>
+                    ✓ Funding Glossary & Acronyms<br>
+                    ✓ 30+ Credit Unions Master List<br>
+                    ✓ $8.5B Funding Database<br>
+                    ✓ 24-Hour Inquiry Removal Guide<br>
+                    ✓ ChexSystems Escape Blueprint<br>
+                    ✓ Restricted Industries Checklist<br>
+                    ✓ Proven Reconsideration Script<br>
+                    ✓ SBIC Explained<br>
+                    ✓ AI-Powered NAICS Code Discovery<br>
+                    ✓ Funding Application Tracker<br>
+                    ✓ My Business Funding Profile<br>
+                    ✓ BONUS: Capital Fast-Track Guide
+                </p>
+            </div>
+
+            <div class="delivery-note">
+                📥 Instant delivery via Google Drive after payment
+            </div>
+
+            <div class="summary-totals">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$97.00</span>
+                </div>
+                <div class="total-row discount-row" id="discount-row">
+                    <span>Discount (funkit30):</span>
+                    <span id="discount-amount">-$30.00</span>
+                </div>
+                <div class="final-row">
+                    <span>You Pay:</span>
+                    <span id="final-price">$97.00</span>
+                </div>
+                <div class="coupon-badge" id="coupon-badge">✓ COUPON APPLIED — $67</div>
+            </div>
+
+            <div class="secure-note">
+                🔒 Secure checkout via PayPal<br>
+                ⚡ Instant digital delivery
+            </div>
+        </div>
+
+        <!-- CHECKOUT FORM -->
+        <div class="checkout-form">
+            <h2>Complete Your Purchase</h2>
+
+            <div class="form-error" id="formError"></div>
+
+            <!-- Contact Information -->
+            <div class="form-section">
+                <h3>Contact Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" placeholder="First name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" placeholder="Last name" required>
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="(optional)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Information -->
+            <div class="form-section">
+                <h3>Business Information</h3>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="businessName">Business Name *</label>
+                        <input type="text" id="businessName" placeholder="Your business name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="businessType">Business Type *</label>
+                        <select id="businessType" required>
+                            <option value="">Select type…</option>
+                            <option value="sole-proprietor">Sole Proprietor</option>
+                            <option value="llc">LLC</option>
+                            <option value="corporation">Corporation</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="businessAge">Business Age *</label>
+                        <select id="businessAge" required>
+                            <option value="">Select age…</option>
+                            <option value="less-6-months">Less than 6 months</option>
+                            <option value="6-12-months">6–12 months</option>
+                            <option value="1-2-years">1–2 years</option>
+                            <option value="2-5-years">2–5 years</option>
+                            <option value="5-plus-years">5+ years</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coupon -->
+            <div class="form-section">
+                <h3>Have a Coupon Code?</h3>
+                <div class="coupon-wrap">
+                    <div class="coupon-input-group">
+                        <input type="text" id="couponCode" placeholder="Enter code (e.g. freecode50)">
+                        <button type="button" class="apply-btn" onclick="applyCoupon()">Apply</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price -->
+            <div class="form-section">
+                <div class="price-summary">
+                    <span>Total:</span>
+                    <span class="amount" id="totalAmount">$97.00</span>
+                </div>
+            </div>
+
+            <!-- Legal Agreements -->
+            <div class="legal-agreements" id="legalBox">
+                <h3>⚠️ Required — Please agree to all before paying:</h3>
+
+                <div class="legal-notice" id="legalNotice">
+                    ❌ You must agree to all four policies before payment can proceed.
+                </div>
+
+                <div class="agreement-item" id="wrap-terms">
+                    <input type="checkbox" id="terms" onchange="clearAgreementError()">
+                    <label for="terms">I agree to the <a onclick="window.open('legal.html','_blank');return false;">Terms & Conditions</a></label>
+                </div>
+                <div class="agreement-item" id="wrap-privacy">
+                    <input type="checkbox" id="privacy" onchange="clearAgreementError()">
+                    <label for="privacy">I have read and accept the <a onclick="window.open('legal.html','_blank');return false;">Privacy Policy</a></label>
+                </div>
+                <div class="agreement-item" id="wrap-refund">
+                    <input type="checkbox" id="refund" onchange="clearAgreementError()">
+                    <label for="refund">I understand the <a onclick="window.open('legal.html','_blank');return false;">Refund Policy</a> — All sales are final on digital products</label>
+                </div>
+                <div class="agreement-item" id="wrap-disclaimer">
+                    <input type="checkbox" id="disclaimer" onchange="clearAgreementError()">
+                    <label for="disclaimer">I acknowledge the <a onclick="window.open('legal.html','_blank');return false;">Disclaimer</a></label>
+                </div>
+            </div>
+
+            <!-- PayPal -->
+            <div id="paypal-button-container"></div>
+            <div class="paypal-blocked-msg" id="paypalBlockedMsg">
+                ⚠️ Please complete all required fields and agree to all policies above before paying.
+            </div>
+
+            <p class="secure-footer">🔒 Payment processed securely by PayPal. We never see your card details.</p>
+        </div>
+
+    </div><!-- end checkout-wrapper -->
+</div><!-- end container -->
+
+<footer class="site-footer">
+    <p>© 2026 ShesFundable. All rights reserved. &nbsp;|&nbsp;
+        <a onclick="window.open('legal.html','_blank');return false;" style="color:var(--gold);text-decoration:none;">Legal Documents</a>
+    </p>
+</footer>
+
+<script>
+    /* ── PRICING ── */
+    const BASE_PRICE = 97.00;
+    const COUPON_PRICES = { 'funkit30': 67.00 };
+    let currentPrice = BASE_PRICE;
+
+    function applyCoupon() {
+        const code = document.getElementById('couponCode').value.toLowerCase().trim();
+        if (!code) { showFormError('Please enter a coupon code.'); return; }
+
+        if (COUPON_PRICES[code] !== undefined) {
+            currentPrice = COUPON_PRICES[code];
+            const saved = (BASE_PRICE - currentPrice).toFixed(2);
+
+            document.getElementById('subtotal').textContent      = '$' + BASE_PRICE.toFixed(2);
+            document.getElementById('discount-amount').textContent = '-$' + saved;
+            document.getElementById('final-price').textContent   = '$' + currentPrice.toFixed(2);
+            document.getElementById('totalAmount').textContent   = '$' + currentPrice.toFixed(2);
+            document.getElementById('discount-row').style.display = 'flex';
+            document.getElementById('coupon-badge').style.display = 'block';
+
+            document.getElementById('couponCode').disabled = true;
+            document.querySelector('.apply-btn').disabled  = true;
+            document.querySelector('.apply-btn').textContent = '✓ Applied';
+        } else {
+            showFormError('Invalid coupon code. Please try again.');
+        }
+    }
+
+    /* ── FORM VALIDATION ── */
+    function showFormError(msg) {
+        const el = document.getElementById('formError');
+        el.textContent = msg;
+        el.style.display = 'block';
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => { el.style.display = 'none'; }, 5000);
+    }
+
+    function highlightField(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('field-error');
+    }
+
+    function clearFieldError(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('field-error');
+    }
+
+    ['firstName','lastName','email','businessName','businessType','businessAge'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', () => clearFieldError(id));
+    });
+
+    /* ── AGREEMENT ERROR ── */
+    function showAgreementError() {
+        const box    = document.getElementById('legalBox');
+        const notice = document.getElementById('legalNotice');
+        box.classList.add('has-error');
+        notice.classList.add('show');
+
+        // Highlight each unchecked item
+        ['terms','privacy','refund','disclaimer'].forEach(id => {
+            const cb   = document.getElementById(id);
+            const wrap = document.getElementById('wrap-' + id);
+            if (cb && !cb.checked) wrap.classList.add('unchecked');
+        });
+
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function clearAgreementError() {
+        const box    = document.getElementById('legalBox');
+        const notice = document.getElementById('legalNotice');
+
+        // Only clear once ALL four are checked
+        const allChecked = ['terms','privacy','refund','disclaimer']
+            .every(id => document.getElementById(id).checked);
+
+        if (allChecked) {
+            box.classList.remove('has-error');
+            notice.classList.remove('show');
+        }
+
+        // Always clear individual highlight on the one just checked
+        ['terms','privacy','refund','disclaimer'].forEach(id => {
+            const cb   = document.getElementById(id);
+            const wrap = document.getElementById('wrap-' + id);
+            if (cb && cb.checked) wrap.classList.remove('unchecked');
+        });
+    }
+
+    function validateAll() {
+        let valid = true;
+
+        // Required fields
+        const fields = [
+            { id: 'firstName',    label: 'First Name' },
+            { id: 'lastName',     label: 'Last Name' },
+            { id: 'email',        label: 'Email Address' },
+            { id: 'businessName', label: 'Business Name' },
+            { id: 'businessType', label: 'Business Type' },
+            { id: 'businessAge',  label: 'Business Age' },
+        ];
+
+        const missing = [];
+        fields.forEach(f => {
+            const el = document.getElementById(f.id);
+            if (!el || !el.value.trim()) {
+                highlightField(f.id);
+                missing.push(f.label);
+                valid = false;
+            }
+        });
+
+        if (missing.length) {
+            showFormError('Please complete: ' + missing.join(', '));
+        }
+
+        // Agreements
+        const allAgreed = ['terms','privacy','refund','disclaimer']
+            .every(id => document.getElementById(id).checked);
+
+        if (!allAgreed) {
+            showAgreementError();
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    /* ── PAYPAL LIVE BUTTONS ── */
+    paypal.Buttons({
+        style: {
+            layout: 'vertical',
+            color:  'gold',
+            shape:  'rect',
+            label:  'pay'
+        },
+
+        createOrder: function(data, actions) {
+            // Validate here — returning undefined cancels the flow without error
+            if (!validateAll()) {
+                return undefined;
+            }
+
+            return actions.order.create({
+                intent: 'CAPTURE',
+                purchase_units: [{
+                    description: 'Funding Readiness Toolkit™ — 20 Resources',
+                    amount: {
+                        currency_code: 'USD',
+                        value: currentPrice.toFixed(2)
+                    }
+                }],
+                application_context: {
+                    shipping_preference: 'NO_SHIPPING',
+                    user_action: 'PAY_NOW',
+                    brand_name: 'ShesFundable'
+                }
+            });
+        },
+
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                const email = document.getElementById('email').value;
+                const orderData = {
+                    firstName:    document.getElementById('firstName').value,
+                    lastName:     document.getElementById('lastName').value,
+                    email:        email,
+                    phone:        document.getElementById('phone').value,
+                    businessName: document.getElementById('businessName').value,
+                    businessType: document.getElementById('businessType').value,
+                    businessAge:  document.getElementById('businessAge').value,
+                    couponUsed:   currentPrice < BASE_PRICE ? 'funkit30' : 'none',
+                    amountPaid:   currentPrice,
+                    txnId:        details.id
+                };
+                sessionStorage.setItem('orderData', JSON.stringify(orderData));
+                window.location.href = 'thank-you.html?email=' + encodeURIComponent(email) + '&amt=' + currentPrice.toFixed(2);
+            });
+        },
+
+        onError: function(err) {
+            console.error('PayPal error:', err);
+            showFormError('Payment error. Please try again or contact fundablebusiness@gmail.com');
+        },
+
+        onCancel: function() {
+            showFormError('Payment was cancelled. Your information is saved — try again below.');
+        }
+
+    }).render('#paypal-button-container');
+
+    /* ── COUPON ENTER KEY ── */
+    document.getElementById('couponCode').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); applyCoupon(); }
+    });
+</script>
+
+</body>
+</html>
