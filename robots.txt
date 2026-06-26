@@ -18,4 +18,5 @@ User-agent: Perplexity-User
 Allow: /
 User-agent: Google-Extended
 Allow: /
+
 Sitemap: https://funding-toolkit.website/sitemap.xml
